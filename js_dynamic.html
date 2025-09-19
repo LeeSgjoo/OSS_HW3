@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWP_22300546</title>
+    <style>
+        #add{
+            background-color: blue;
+            font-weight: bold;
+            color:white
+        }
+        #remv{
+            background-color: green;
+            font-weight: bold;
+            color:white
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Dynamic Wep Page</h1>
+    <div id = "addW">
+        <input type = "text" id ="tbar">
+        <button id ="add">추가</button>
+        <button id ="remv">삭제</button>
+    </div>
+    <div>
+        <ul id = "list">
+            <li>apple</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        console.log("모든 요소 로딩 완료!");
+        
+        let tbar = document.getElementById("tbar");
+        let add = document.getElementById("add");
+        let remv = document.getElementById("remv");
+        let list = document.getElementById("list");
+
+        add.addEventListener("click", ()=>{
+            let text = tbar.value.split(",");
+            for(var i = 0; i < text.length; i++){
+                let newOption = document.createElement("li");
+                newOption.innerText = text[i];
+                list.appendChild(newOption); 
+            }
+            tbar.value = "";
+        })
+        remv.addEventListener("click", ()=>{
+            let lastOption = list.lastElementChild;
+            if(lastOption){
+                lastOption.remove()
+            }
+        })
+
+    };
+
+    
+
+</script>
+</html>
