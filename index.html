@@ -181,8 +181,8 @@
     window.onload = function() {
       console.log("모든 요소 로딩 완료!");
       let bestFriend = document.getElementsByClassName("info");
-      let addB = document.getElementById("add");
-      let delB = document.getElementById("del");
+      let addB = document.getElementById("#add");
+      let delB = document.getElementById("#del");
 
       // 친구 상세 페이지 이동
       bestFriend.addEventListener("click",()=> {
@@ -192,7 +192,7 @@
       // 친구 추가 페이지 이동
       addB.addEventListener("click",()=> {
         alert("게시물이 추가됩니다")
-        window.location.href = "add.html";
+        window.location.href = "https://snazzy-hotteok-981192.netlify.app/add.html";
       })
 
       function deleteLastFriend() {
