@@ -2,97 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>22300546_OSS_HW3</title>
+  <title>친구 관리 리스트</title>
   <style>
-    /* 기본 스타일 */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background: #fafafa;
     }
 
-    header {
-      background-color: #4a90e2;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 1.8rem;
+    /* 상단 배너 */
+    .banner {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      font-size: 2em;
       font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      background-color: blanchedalmond;
     }
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    /* 중앙 컨테이너 */
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
     }
 
     h2 {
       text-align: center;
-      color: #4a90e2;
-      margin-bottom: 30px;
+      margin: 20px 0;
     }
 
-    ul.link-list {
+    /* 베스트 프렌드 카드 */
+    .best-friends {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: -50px; /* 배너와 살짝 겹치게 */
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card .info {
+      padding: 15px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* 버튼 */
+    .btn-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: white;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button.delete {
+      background-color: #f44336;
+    }
+
+    button.delete:hover {
+      background-color: #e53935;
+    }
+
+    /* 친구 목록 */
+    ul {
       list-style: none;
       padding: 0;
     }
 
-    ul.link-list li {
-      background-color: #fff;
-      margin: 15px 0;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+    li {
+      padding: 12px;
+      margin: 8px 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
     }
 
-    ul.link-list li:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    ul.link-list li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      display: block;
-      font-size: 1.1rem;
-    }
-
-    ul.link-list li a:hover {
-      color: #4a90e2;
-    }
-
-    footer {
-      text-align: center;
-      margin: 50px 0 20px 0;
-      color: #777;
-      font-size: 0.9rem;
+    li:hover {
+      background: #e0e0e0;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    22300546_OSS_HW3
-  </header>
+  <!-- 상단 배너 -->
+  <div class="banner">
+      <p>친구 관리 리스트</p>
+  </div>
 
-  <main>
-    <h2>과제 웹 페이지 링크 모음</h2>
-    <ul class="link-list">
-      <li><a href="page1.html" target="_blank">과제 페이지 1</a></li>
-      <li><a href="page2.html" target="_blank">과제 페이지 2</a></li>
-      <li><a href="page3.html" target="_blank">과제 페이지 3</a></li>
+  <!-- 베스트 프렌드 카드 -->
+  <div class="container best-friends">
+    <div class="card">
+      <img src="./img/SJ1.webp" alt="인사하는 승주">
+      <div class="info">
+        <h3>인사하는 승주</h3>
+        <p>나이: 22</p>
+        <p>관계: 동생</p>
+        <p>TMI: 치킨 좋아함</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="./img/SJ2.jpeg" alt="장난치는 승주">
+      <div class="info">
+        <h3>장난치는 승주</h3>
+        <p>나이: 22</p>
+        <p>관계: 동기</p>
+        <p>TMI: 가방을 <br>왜 저렇게 매냐고 <br>훈수 들음</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="./img/SJ3.jpeg" alt="옆에서 보는 승주">
+      <div class="info">
+        <h3>옆에서 보는 승주</h3>
+        <p>나이: 22</p>
+        <p>관계: 절친</p>
+        <p>TMI: 매일 헬스함</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>----------------------------<br>Frined List<br>-----------------------------</h2>
+
+    <!-- 버튼 -->
+    <div class="btn-box">
+      <button id = "add">추가</button>
+      <button id= "del">삭제</button>
+    </div>
+
+    <!-- 친구 목록 -->
+    <ul id="friendList">
+      <li>홍길동</li>
+      <li>김철수</li>
+      <li>이영희</li>
     </ul>
-  </main>
+  </div>
 
-  <footer>
-    © 22300546 OSS Homework 3
-  </footer>
+  <script>
+    window.onload = function() {
+      console.log("모든 요소 로딩 완료!");
+      let bestFriend = document.getElementsByClassName("info");
+      let addB = document.getElementById("add");
+      let delB = document.getElementById("del");
+
+      // 친구 상세 페이지 이동
+      bestFriend.addEventListener("click",()=> {
+        window.location.href = 'friend.html?id=${id}';
+      })
+
+      // 친구 추가 페이지 이동
+      addB.addEventListener("click",()=> {
+        alert("게시물이 추가됩니다")
+        window.location.href = "add.html";
+      })
+
+      function deleteLastFriend() {
+        const list = document.getElementById("friendList");
+        if (list.lastElementChild) {
+          list.removeChild(list.lastElementChild);
+        } else {
+          alert("삭제할 친구가 없습니다!");
+        }
+      }
+
+    delB.addEventListener("click", deleteLastFriend);
+    }
+  </script>
 
 </body>
 </html>

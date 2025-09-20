@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>친구 관리 리스트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      font-style: bold;
+    }
+
+    /* 상단 배너 */
+    .banner {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      font-size: 2em;
+      font-weight: bold;
+      background-color: blanchedalmond;
+    }
+
+    /* 중앙 컨테이너 */
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: left;
+    }
+
+    h2 {
+      text-align: left;
+      margin: 20px 0;
+    }
+      
+  </style>
+</head>
+<body>
+
+  <!--
+    정보 추가 날짜
+    친구 이름
+    나이
+    관계
+    친밀도 (1~5로 체크하기)
+    tmi 텍스트 박스로 입력하기
+  -->
+<form action = "index.html" method = "post" onsubmit="return fcheck">
+  <div class="banner">
+      <p>친구 정보 추가</p>
+  </div>
+
+  <div class = "container">
+    <div id = "date">
+        <p>1. 날짜</p>
+        <input type="date" name = "fdate" required>
+    </div>
+    <div id = "name">
+        <p>2.이름 (3~5글자 이내)</p>
+        <input type = "text" name = "fname" required>
+    </div>
+    <div id = "age">
+        <p>3. 나이 (숫자만 입력)</p>
+        <input type = "text" name = "fage" required>
+    </div>
+    <div id= "relationship">
+        <p>4. 관계</p>
+        <input type = "text" name = "frel">
+    </div>
+    <div id = "degree">
+        <p>5. 친밀도</p>
+        <input type="radio" name ="deg" value ="1">1점
+        <input type="radio" name ="deg" value ="2">2점
+        <input type="radio" name ="deg" value ="3">3점
+        <input type="radio" name ="deg" value ="4">4점
+        <input type="radio" name ="deg" value ="5">5점
+    </div>
+    <div id = "tmi">
+        <p>6. TMI</p>
+        <textarea></textarea>
+    </div>
+    <input type="submit" value = "저장">
+    <input type="reset" value = "초기화">
+  </div>
+
+  
+</form>
+
+</body>
+<script>
+    var name = document.getElementById("fanme");
+    var age = document.getElementById("fage");
+    function vcheck(){
+        if(!validateName(id)){
+            event.preventDefault();
+            alert("Error: 아이디의 양식이 조건에 맞지 않습니다!!");
+            return false;
+        }
+        else if(!validateAge()){
+            event.preventDefault();
+            alert("Error: 패스워드의 양식이 조건에 맞지 않습니다!!");
+        }
+        else{
+            alert("저장이 완료되었습니다!");
+        }
+    }
+    </script>
+</html>
