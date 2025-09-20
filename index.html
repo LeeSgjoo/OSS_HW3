@@ -165,8 +165,8 @@
 
     <!-- 버튼 -->
     <div class="btn-box">
-      <button id = "add">추가</button>
-      <button id= "del">삭제</button>
+      <button id = "add" type = "button">추가</button>
+      <button id= "del" type = "button">삭제</button>
     </div>
 
     <!-- 친구 목록 -->
@@ -181,8 +181,8 @@
     window.onload = function() {
       console.log("모든 요소 로딩 완료!");
       let bestFriend = document.getElementsByClassName("info");
-      let addB = document.getElementById("#add");
-      let delB = document.getElementById("#del");
+      let addB = document.getElementById("add");
+      let delB = document.getElementById("del");
 
       // 친구 상세 페이지 이동
       bestFriend.addEventListener("click",()=> {

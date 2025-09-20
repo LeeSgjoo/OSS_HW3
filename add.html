@@ -12,7 +12,6 @@
       font-style: bold;
     }
 
-    /* 상단 배너 */
     .banner {
       width: 100%;
       height: 200px;
@@ -25,7 +24,6 @@
       background-color: blanchedalmond;
     }
 
-    /* 중앙 컨테이너 */
     .container {
       max-width: 1000px;
       margin: 20px auto;
@@ -42,72 +40,75 @@
 </head>
 <body>
 
-  <!--
-    정보 추가 날짜
-    친구 이름
-    나이
-    관계
-    친밀도 (1~5로 체크하기)
-    tmi 텍스트 박스로 입력하기
-  -->
-<form action = "index.html" method = "post" onsubmit="return fcheck">
+<form action="index.html" method="post" onsubmit="return vcheck(event)">
   <div class="banner">
       <p>친구 정보 추가</p>
   </div>
 
-  <div class = "container">
-    <div id = "date">
+  <div class="container">
+    <div id="date">
         <p>1. 날짜</p>
-        <input type="date" name = "fdate" required>
+        <input type="date" name="fdate" required>
     </div>
-    <div id = "name">
-        <p>2.이름 (3~5글자 이내)</p>
-        <input type = "text" name = "fname" required>
+    <div id="name">
+        <p>2. 이름 (3~5글자 이내)</p>
+        <input type="text" id="fname" name="fname" required>
     </div>
-    <div id = "age">
+    <div id="age">
         <p>3. 나이 (숫자만 입력)</p>
-        <input type = "text" name = "fage" required>
+        <input type="text" id="fage" name="fage" required>
     </div>
-    <div id= "relationship">
+    <div id="relationship">
         <p>4. 관계</p>
-        <input type = "text" name = "frel">
+        <input type="text" name="frel">
     </div>
-    <div id = "degree">
+    <div id="degree">
         <p>5. 친밀도</p>
-        <input type="radio" name ="deg" value ="1">1점
-        <input type="radio" name ="deg" value ="2">2점
-        <input type="radio" name ="deg" value ="3">3점
-        <input type="radio" name ="deg" value ="4">4점
-        <input type="radio" name ="deg" value ="5">5점
+        <input type="radio" name="deg" value="1" required>1점
+        <input type="radio" name="deg" value="2">2점
+        <input type="radio" name="deg" value="3">3점
+        <input type="radio" name="deg" value="4">4점
+        <input type="radio" name="deg" value="5">5점
     </div>
-    <div id = "tmi">
+    <div id="tmi">
         <p>6. TMI</p>
-        <textarea></textarea>
+        <textarea name ="ftmi"></textarea>
     </div>
-    <input type="submit" value = "저장">
-    <input type="reset" value = "초기화">
+    <input type="submit" value="저장">
+    <input type="reset" value="초기화">
   </div>
-
-  
 </form>
 
 </body>
 <script>
-    var name = document.getElementById("fanme");
-    var age = document.getElementById("fage");
-    function vcheck(){
-        if(!validateName(id)){
-            event.preventDefault();
-            alert("Error: 아이디의 양식이 조건에 맞지 않습니다!!");
-            return false;
-        }
-        else if(!validateAge()){
-            event.preventDefault();
-            alert("Error: 패스워드의 양식이 조건에 맞지 않습니다!!");
-        }
-        else{
-            alert("저장이 완료되었습니다!");
-        }
+  // 이름 유효성 검사 (3~5 글자)
+  function validateName(name) {
+    return name.length >= 3 && name.length <= 5;
+  }
+
+  // 나이 유효성 검사 (숫자만, 양수)
+  function validateAge(age) {
+    return /^[0-9]+$/.test(age) && parseInt(age) > 0;
+  }
+
+  function vcheck(event) {
+    const name = document.getElementById("fname").value.trim();
+    const age = document.getElementById("fage").value.trim();
+
+    if (!validateName(name)) {
+      alert("Error: 이름은 3~5글자여야 합니다!");
+      event.preventDefault();
+      return false;
     }
-    </script>
+
+    if (!validateAge(age)) {
+      alert("Error: 나이는 숫자만 입력해야 합니다!");
+      event.preventDefault();
+      return false;
+    }
+
+    alert("저장이 완료되었습니다!");
+    return true;
+  }
+</script>
 </html>
