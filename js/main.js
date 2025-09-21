@@ -11,7 +11,14 @@ window.onload = function() {
     localStorage.setItem('friends', JSON.stringify(initialFriends));
   }
 
-  let friends = JSON.parse(localStorage.getItem('friends'));
+  let friends = [];
+  try {
+    // localStorage에서 데이터를 가져와 파싱합니다. 데이터가 없거나 잘못된 형식일 경우를 대비합니다.
+    friends = JSON.parse(localStorage.getItem('friends')) || [];
+  } catch (e) {
+    console.error("localStorage에서 'friends' 데이터를 파싱하는 중 오류가 발생했습니다:", e);
+    // 오류 발생 시에도 페이지가 완전히 깨지지 않도록 빈 배열로 초기화합니다.
+  }
 
   function renderFriends() {
     tableBody.innerHTML = '';

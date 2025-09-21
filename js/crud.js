@@ -1,7 +1,14 @@
 window.onload = function() {
   const urlParams = new URLSearchParams(window.location.search);
   const currentPath = window.location.pathname;
-  let friends = JSON.parse(localStorage.getItem('friends')) || [];
+  let friends = [];
+  try {
+    // localStorage에서 데이터를 가져와 파싱합니다. 데이터가 없거나 잘못된 형식일 경우를 대비합니다.
+    friends = JSON.parse(localStorage.getItem('friends')) || [];
+  } catch (e) {
+    console.error("localStorage에서 'friends' 데이터를 파싱하는 중 오류가 발생했습니다:", e);
+    // 오류 발생 시, friends를 빈 배열로 초기화하여 앱의 나머지 부분이 동작하도록 합니다.
+  }
 
   function validateForm(formData) {
     if (!formData.name || formData.name.length < 3 || formData.name.length > 5) {
