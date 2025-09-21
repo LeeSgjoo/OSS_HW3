@@ -8,10 +8,9 @@
 }
 
 /* 베스트 프렌드 카드 이미지 비율 유지 */
+/* fluid 방식으로 만들기 위해 height와 object-fit 속성을 제거했습니다. */
 .card-img-top {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
 }
 
 /* --- 모바일 기기를 위한 반응형 스타일 --- */
