@@ -33,7 +33,7 @@ window.onload = function() {
   if (currentPath.includes('add.html') || currentPath.includes('edit.html')) {
     const form = document.getElementById('friendForm');
 
-    // [진단 코드 추가] form 요소를 찾지 못하면 콘솔에 에러를 기록하고 실행을 중단합니다.
+    // [진단 코드 추가] form 요소를 찾지 못하면 콘솔에 에러를 기록하고 실행을 중단
     if (!form) {
       console.error("치명적 오류: id가 'friendForm'인 form 요소를 찾을 수 없습니다. 이벤트 리스너를 연결할 수 없습니다.");
       return; 
