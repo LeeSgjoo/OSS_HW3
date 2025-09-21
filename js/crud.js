@@ -69,11 +69,17 @@ window.onload = function() {
       if (validateForm(formData)) {
         if (friendId) {
           if (confirm("게시물을 수정할까요?")) {
-            const index = friends.findIndex(f => f.id == friendId);
+            const idToEdit = parseInt(friendId, 10); // 1. ID를 숫자로 변환
+            const index = friends.findIndex(f => f.id === idToEdit); // 2. ===
             if (index !== -1) {
-              friends[index] = { ...friends[index], ...formData };
+              // 3. formData와 숫자 ID를 사용해 완전히 새로운 객체를 만들어 교체
+              const updatedFriend = {
+                ...formData,
+                id: idToEdit
+              };
+              friends[index] = updatedFriend;
               localStorage.setItem('friends', JSON.stringify(friends));
-              window.location.href = `view.html?id=${friendId}`;
+              window.location.href = `view.html?id=${idToEdit}`;
             }
           }
         } else {
