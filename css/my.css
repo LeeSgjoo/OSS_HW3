@@ -1,13 +1,4 @@
-/* 기본 스타일 */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-}
-
-/* 상단 배너 */
-header {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+/* ... (기존 my.css 코드) ... */
 
 /* 베스트 프렌드 카드 스타일 */
 .best-friend-card:hover {
@@ -23,9 +14,21 @@ header {
   object-fit: cover;
 }
 
-/* RWD를 위한 스타일 */
+/* --- 모바일 기기를 위한 반응형 스타일 --- */
+/* 화면 너비가 768px 이하일 때 적용 */
 @media (max-width: 767.98px) {
   .display-4 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* 배너 폰트 크기 조절 */
+  }
+
+  /* 베스트 프렌드 카드 내부 글자 크기 조절 */
+  .best-friend-card .card-title {
+    font-size: 1.25rem; /* 제목 글꼴 크기 줄임 */
+  }
+  .best-friend-card .card-text {
+    font-size: 0.8rem; /* 본문 글꼴 크기 줄임 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트를 '...'로 표시 */
   }
 }
