@@ -1,16 +1,17 @@
 window.onload = function() {
   const tableBody = document.getElementById('friendTableBody');
-  let friends = JSON.parse(localStorage.getItem('friends')) || [];
 
-  if (friends.length === 0) {
+  // localStorage에 'friends' 데이터가 없으면 초기 데이터를 생성합니다.
+  if (localStorage.getItem('friends') === null) {
     const initialFriends = [
       { id: 1, name: '홍길동', age: 25, phone: '010-1234-5678', birthday: '1995-01-20', relationship: '고향 친구', degree: 4, tmi: '치킨을 좋아함', addedDate: '2023-09-01' },
       { id: 2, name: '김철수', age: 27, phone: '010-9876-5432', birthday: '1998-05-15', relationship: '초등학교 동창', degree: 5, tmi: '매일 헬스함', addedDate: '2023-09-02' },
       { id: 3, name: '이영희', age: 26, phone: '010-5555-4444', birthday: '1996-11-28', relationship: '대학 선배', degree: 3, tmi: '매주 등산', addedDate: '2023-09-03' }
     ];
     localStorage.setItem('friends', JSON.stringify(initialFriends));
-    friends = initialFriends;
   }
+
+  let friends = JSON.parse(localStorage.getItem('friends'));
 
   function renderFriends() {
     tableBody.innerHTML = '';

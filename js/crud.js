@@ -49,10 +49,15 @@ window.onload = function() {
         phone: document.getElementById('phone').value,
         birthday: document.getElementById('birthday').value,
         relationship: document.getElementById('relationship').value,
-        degree: parseInt(document.querySelector('input[name="degree"]:checked').value),
+        degree: document.querySelector('input[name="degree"]:checked') ? parseInt(document.querySelector('input[name="degree"]:checked').value) : null,
         tmi: document.getElementById('tmi').value,
         addedDate: document.getElementById('addedDate').value
       };
+
+      if (formData.degree === null) {
+        alert("친밀도를 선택해주세요.");
+        return;
+      }
 
       if (validateForm(formData)) {
         if (friendId) {
