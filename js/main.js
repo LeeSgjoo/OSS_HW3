@@ -49,4 +49,15 @@ window.onload = function() {
     });
   }
   renderFriends();
+
+  // [추가] 데이터 초기화 버튼 기능 구현
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm("정말로 모든 친구 목록을 삭제하고 초기 상태로 되돌리시겠습니까?")) {
+        localStorage.removeItem('friends'); // 'friends' 키를 완전히 삭제
+        location.reload(); // 페이지를 새로고침하여 초기화 로직을 다시 실행
+      }
+    });
+  }
 };
