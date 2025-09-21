@@ -1,114 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>친구 관리 리스트</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fafafa;
-      font-style: bold;
-    }
-
-    .banner {
-      width: 100%;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: black;
-      font-size: 2em;
-      font-weight: bold;
-      background-color: blanchedalmond;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-      text-align: left;
-    }
-
-    h2 {
-      text-align: left;
-      margin: 20px 0;
-    }
-      
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>친구 추가</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/my.css">
 </head>
 <body>
-
-<form action="index.html" method="post" onsubmit="return vcheck(event)">
-  <div class="banner">
-      <p>친구 정보 추가</p>
-  </div>
+  <header class="bg-primary text-white text-center py-5 mb-5">
+    <h1 class="display-4">친구 추가</h1>
+  </header>
 
   <div class="container">
-    <div id="date">
-        <p>1. 날짜</p>
-        <input type="date" name="fdate" required>
-    </div>
-    <div id="name">
-        <p>2. 이름 (3~5글자 이내)</p>
-        <input type="text" id="fname" name="fname" required>
-    </div>
-    <div id="age">
-        <p>3. 나이 (숫자만 입력)</p>
-        <input type="text" id="fage" name="fage" required>
-    </div>
-    <div id="relationship">
-        <p>4. 관계</p>
-        <input type="text" name="frel">
-    </div>
-    <div id="degree">
-        <p>5. 친밀도</p>
-        <input type="radio" name="deg" value="1" required>1점
-        <input type="radio" name="deg" value="2">2점
-        <input type="radio" name="deg" value="3">3점
-        <input type="radio" name="deg" value="4">4점
-        <input type="radio" name="deg" value="5">5점
-    </div>
-    <div id="tmi">
-        <p>6. TMI</p>
-        <textarea name ="ftmi"></textarea>
-    </div>
-    <input type="submit" value="저장">
-    <input type="reset" value="초기화">
+    <form id="friendForm" class="p-4 shadow-sm bg-light rounded">
+      <div class="mb-3">
+        <label for="name" class="form-label">이름</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">나이</label>
+        <input type="number" class="form-control" id="age" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">연락처</label>
+        <input type="tel" class="form-control" id="phone" required>
+      </div>
+      <div class="mb-3">
+        <label for="birthday" class="form-label">생일</label>
+        <input type="date" class="form-control" id="birthday">
+      </div>
+      <div class="mb-3">
+        <label for="relationship" class="form-label">나와의 관계</label>
+        <input type="text" class="form-control" id="relationship">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">친밀도</label>
+        <div>
+          <input type="radio" class="form-check-input" name="degree" id="deg1" value="1" required> <label for="deg1">1점</label>
+          <input type="radio" class="form-check-input" name="degree" id="deg2" value="2"> <label for="deg2">2점</label>
+          <input type="radio" class="form-check-input" name="degree" id="deg3" value="3"> <label for="deg3">3점</label>
+          <input type="radio" class="form-check-input" name="degree" id="deg4" value="4"> <label for="deg4">4점</label>
+          <input type="radio" class="form-check-input" name="degree" id="deg5" value="5"> <label for="deg5">5점</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="tmi" class="form-label">TMI</label>
+        <textarea class="form-control" id="tmi" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="addedDate" class="form-label">추가 날짜</label>
+        <input type="date" class="form-control" id="addedDate">
+      </div>
+      
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-success">[추가]</button>
+        <a href="index.html" class="btn btn-secondary">취소</a>
+      </div>
+    </form>
   </div>
-</form>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/crud.js"></script>
 </body>
-<script>
-  // 이름 유효성 검사 (3~5 글자)
-  function validateName(name) {
-    return name.length >= 3 && name.length <= 5;
-  }
-
-  // 나이 유효성 검사 (숫자만, 양수)
-  function validateAge(age) {
-    return /^[0-9]+$/.test(age) && parseInt(age) > 0;
-  }
-
-  function vcheck(event) {
-    const name = document.getElementById("fname").value.trim();
-    const age = document.getElementById("fage").value.trim();
-
-    if (!validateName(name)) {
-      alert("Error: 이름은 3~5글자여야 합니다!");
-      event.preventDefault();
-      return false;
-    }
-
-    if (!validateAge(age)) {
-      alert("Error: 나이는 숫자만 입력해야 합니다!");
-      event.preventDefault();
-      return false;
-    }
-
-    alert("저장이 완료되었습니다!");
-    return true;
-  }
-</script>
 </html>
